@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Katalog Film Indonesia • Stremio</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,sans-serif;background:#0b1020;color:#eef2ff}
+main{max-width:880px;margin:0 auto;padding:36px 20px}header{padding:32px 0}small,.muted{color:#a5b4cc}
+h1{font-size:clamp(2rem,6vw,3.6rem);line-height:1.08;margin:12px 0}p{line-height:1.65;color:#cbd5e1}
+.panel{background:#151d31;border:1px solid #29354e;border-radius:18px;padding:22px;margin:18px 0}
+button,a.btn{display:inline-block;background:#7c3aed;color:white;padding:13px 18px;border-radius:12px;text-decoration:none;border:0;font-weight:700;cursor:pointer}
+code{background:#0b1020;padding:4px 8px;border-radius:7px;word-break:break-all}.list{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}.pill{padding:12px;background:#202b43;border-radius:10px}
+footer{margin-top:30px;color:#94a3b8;font-size:.9rem}
+</style></head><body><main>
+<header><small>STREMIO ADDON • TMDB METADATA</small><h1>Katalog Film<br>Indonesia 🇮🇩</h1>
+<p>Jelajahi film Indonesia berdasarkan popularitas, tren harian, genre, jadwal tayang, dan rating. Katalog memakai metadata TMDB dan diperbarui berkala.</p></header>
+<section class="panel"><h2>Pasang ke Stremio</h2><p>Manifest addon untuk dipasang ke aplikasi Stremio melalui domain publik HTTPS.</p>
+<p>Alamat manifest:</p><code id="manifest">Alamat manifest akan tampil setelah deployment</code><p style="margin-top:18px"><a class="btn" id="install" href="#" onclick="installAddon(event)">Install ke Stremio</a></p>
+<p class="muted">Pastikan domain PUBLIC_URL sudah HTTPS.</p></section>
+<section class="panel"><h2>Katalog tersedia</h2><div class="list">
+<div class="pill">🔥 Trending Hari Ini</div><div class="pill">⭐ Populer</div><div class="pill">🏆 Rating Terbaik</div><div class="pill">🎬 Sedang Tayang</div><div class="pill">🗓️ Segera Tayang</div><div class="pill">🎭 17+ Genre</div></div></section>
+<section class="panel"><h2>Catatan</h2><p>Addon ini menyediakan katalog dan informasi film, bukan tautan streaming. TMDB API key disimpan sebagai environment variable server.</p><p>Powered by TMDB. This product uses the TMDB API but is not endorsed or certified by TMDB.</p></section>
+<footer>Metadata TMDB • Katalog Film Indonesia</footer></main>
+<script>
+const base = '__PUBLIC_URL__';
+document.getElementById('manifest').textContent = base + '/manifest.json';
+document.getElementById('install').href = 'stremio://' + new URL(base).host + '/manifest.json';
+function installAddon(e){ if(new URL(base).hostname==='localhost'||new URL(base).hostname==='127.0.0.1'){e.preventDefault();alert('Deploy addon ke hosting publik HTTPS terlebih dahulu.');} }
+</script></body></html>
